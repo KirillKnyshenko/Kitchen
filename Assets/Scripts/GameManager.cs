@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
 
     public event EventHandler OnPaused;
     public event EventHandler OnUnpaused;
-
     public event EventHandler OnStateChanged;
     public enum State {
         WaitingToStart,

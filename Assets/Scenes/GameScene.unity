@@ -840,6 +840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608010bd47b76d74cb1b7a8b198acba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volume: 1
 --- !u!4 &177157054 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6749953557650209562, guid: 8ceb061f6fd43964eb5e07550487a0c4, type: 3}
@@ -6056,6 +6057,10 @@ PrefabInstance:
     - target: {fileID: 419414480921842885, guid: 121593c3c3e104a4b98a9a4267d8732e, type: 3}
       propertyPath: m_Name
       value: StoveCounter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157516993071337500, guid: 121593c3c3e104a4b98a9a4267d8732e, type: 3}
+      propertyPath: rolloffMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7500949734069353833, guid: 121593c3c3e104a4b98a9a4267d8732e, type: 3}
       propertyPath: playOnAwake
