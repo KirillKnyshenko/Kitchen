@@ -44,6 +44,10 @@ public class StoveCounter : BaseCounter, IHasProgress
                 case State.Frying:
                     fryingTimer += Time.deltaTime;
 
+                    OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs {
+                        progressNormalized = (float)fryingTimer / fryingRecipeSO.timeFrying
+                    });
+
                     if (fryingTimer >= fryingRecipeSO.timeFrying)
                     {
                         // Fried
@@ -52,19 +56,15 @@ public class StoveCounter : BaseCounter, IHasProgress
 
                         KitchenObject.SpawnKitchenObject(fryingRecipeSO.output, this);
 
-                        state = State.Fried;
-
                         burningRecipeSO = GetBurningRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
                         burningTimer = 0;
 
                         OnStateChanged?.Invoke(this, new OnStateChangedEventArgs{
                             state = state
                         });
-                    }
 
-                    OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs {
-                        progressNormalized = (float)fryingTimer / fryingRecipeSO.timeFrying
-                    });
+                        state = State.Fried;
+                    }
                 break;
                 case State.Fried:
                     burningTimer += Time.deltaTime;
@@ -78,7 +78,7 @@ public class StoveCounter : BaseCounter, IHasProgress
                         KitchenObject.SpawnKitchenObject(burningRecipeSO.output, this);
 
                         state = State.Burned;
-                        
+
                         OnStateChanged?.Invoke(this, new OnStateChangedEventArgs{
                             state = state
                         });
@@ -209,5 +209,9 @@ public class StoveCounter : BaseCounter, IHasProgress
             }
         }
         return null;
+    }
+
+    public bool isFried() {
+        return state == State.Fried;
     }
 }

@@ -35,9 +35,9 @@ public class OptionsUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gamepadPauseButtonText;
     [SerializeField] private Transform pressKeyToRebind;
     private Action OnCloseButtonAction;
+
     private void Start() {
         Instance = this;
-
         GameManager.Instance.OnUnpaused += GameManager_OnUnpaused;
 
         HidePressKeyToRebind();
